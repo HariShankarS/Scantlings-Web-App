@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<title> Hydrostatics </title>
+   	<link type="text/css" rel="stylesheet" href="hydro.css" >
+   	<script type='text/javascript' src='javascript.js'></script>
+</head>
+<body background="backgrounndd.jpg">
+<div id="header">
+<h1> HYDROSTATIC PROPERTIES </h1>
+</div>
+<div id="input">
+
+    
+  <table>
+    <tr>
+    <td ><strong>  Stations</strong>  </td>
+    <td> 0 </td> 
+    	<td> 0.25 </td>
+    	<td> 0.5  </td>
+    	<td> 0.75 </td>
+    	<td>  1   </td>
+    	<td> 1.5  </td>
+    	<td> 2    </td>
+    	<td> 2.5  </td>
+    	<td> 3    </td>
+    	<td> 3.5  </td>
+    	<td> 4    </td>
+    	<td> 5    </td>
+      <td> 6    </td>    	
+    	<td> 6.5  </td>
+    	<td> 7    </td>
+    	<td>7.5   </td>
+    	<td> 8    </td>
+    	<td> 8.5  </td>
+    	<td> 9    </td>
+    	<td> 9.25 </td>
+    	<td> 9.5  </td>
+    	<td> 9.75 </td>
+    	<td> 10   </td>
+   </tr> 
+   <tr> 
+      <td> <strong>  Half Breadths </strong>  </td> 
+    	<td>  <input type="text" id='d0'>    </td>
+    	<td>   <input type="text" id='d1'>    </td>
+    	<td>  <input type="text" id='d2'>    </td>
+    	<td>  <input type="text" id='d3'>     </td>
+    	<td>  <input type="text" id='d4'>    </td>
+    	<td>  <input type="text" id='d5'>     </td>
+    	<td>  <input type="text" id='d6'>    </td>
+    	<td>  <input type="text" id='d7'>     </td>
+    	<td>  <input type="text" id='d8'>    </td>
+    	<td>   <input type="text" id='d9'>    </td>
+    	<td>   <input type="text" id='d10'>   </td>
+    	<td>  <input type="text" id='d11'>     </td>
+    	<td>  <input type="text" id='d12'>    </td>
+    	<td>  <input type="text" id='d13'>     </td>
+    	<td>   <input type="text" id='d14'>   </td>
+    	<td>   <input type="text" id='d15'>    </td>
+    	<td>   <input type="text" id='d16'>   </td>
+    	<td>   <input type="text" id='d17'>    </td>
+    	<td>   <input type="text" id='d18'>   </td>
+    	<td>   <input type="text" id='d19'>    </td>
+    	<td>   <input type="text" id='d20'>   </td>
+    	<td>   <input type="text" id='d21'>    </td>
+    	<td>   <input type="text" id='d22'>    </td>
+    </tr>
+    <tr>
+    <td> <strong> Bonjeans </strong> </td>
+    <td>  <input type="text" id='l0'>    </td>
+    <td>   <input type="text" id='l1'>    </td>
+    	<td>  <input type="text" id='l2'>    </td>
+    	<td>  <input type="text" id='l3'>     </td>
+    	<td>  <input type="text" id='l4'>    </td>
+    	<td>  <input type="text" id='l5'>     </td>
+    	<td>  <input type="text" id='l6'>    </td>
+    	<td>  <input type="text" id='l7'>     </td>
+    	<td>  <input type="text" id='l8'>    </td>
+    	<td>   <input type="text" id='l9'>    </td>
+    	<td>   <input type="text" id='l10'>   </td>
+    	<td>  <input type="text" id='l11'>     </td>
+    	<td>  <input type="text" id='l12'>    </td>
+    	<td>  <input type="text" id='l13'>     </td>
+    	<td>   <input type="text" id='l14'>   </td>
+    	<td>   <input type="text" id='l15'>    </td>
+    	<td>   <input type="text" id='l16'>   </td>
+    	<td>   <input type="text" id='l17'>    </td>
+    	<td>   <input type="text" id='l18'>   </td>
+    	<td>   <input type="text" id='l19'>    </td>
+    	<td>   <input type="text" id='l20'>   </td>
+    	<td>   <input type="text" id='l21'>    </td>
+    	<td>   <input type="text" id='l22'>    </td>    	
+    </tr>	
+   	<tr>
+   	  <td> <strong> Vertical Moments </strong> </td> 
+    	<td>  <input type="text" id='o0'>    </td>
+    	<td>  <input type="text" id='o1'>    </td>
+    	<td>  <input type="text" id='o2'>    </td>
+    	<td>  <input type="text" id='o3'>    </td>
+    	<td>  <input type="text" id='o4'>    </td>
+    	<td>  <input type="text" id='o5'>    </td>
+    	<td>  <input type="text" id='o6'>    </td>
+    	<td>  <input type="text" id='o7'>    </td>
+    	<td>  <input type="text" id='o8'>    </td>
+    	<td>  <input type="text" id='o9'>    </td>
+    	<td>  <input type="text" id='o10'>   </td>
+    	<td>  <input type="text" id='o11'>   </td>
+    	<td>  <input type="text" id='o12'>   </td>
+    	<td>  <input type="text" id='o13'>   </td>
+    	<td>  <input type="text" id='o14'>   </td>
+    	<td>  <input type="text" id='o15'>   </td>
+    	<td>  <input type="text" id='o16'>   </td>
+    	<td>  <input type="text" id='o17'>   </td>
+    	<td>  <input type="text" id='o18'>   </td>
+    	<td>  <input type="text" id='o19'>   </td>
+    	<td>  <input type="text" id='o20'>   </td>
+    	<td>  <input type="text" id='o21'>   </td>
+    	<td>  <input type="text" id='o22'>   </td>    	
+   </tr>
+    <tr>
+      <td>  <strong> Half Girths </strong> </td>
+   	<td>  <input type="text" id='q0'>    </td>
+    	<td>  <input type="text" id='q1'>    </td>
+    	<td>  <input type="text" id='q2'>    </td>
+    	<td>  <input type="text" id='q3'>    </td>
+    	<td>  <input type="text" id='q4'>    </td>
+    	<td>  <input type="text" id='q5'>    </td>
+    	<td>  <input type="text" id='q6'>    </td>
+    	<td>  <input type="text" id='q7'>    </td>
+    	<td>  <input type="text" id='q8'>    </td>
+    	<td>  <input type="text" id='q9'>    </td>
+    	<td>  <input type="text" id='q10'>   </td>
+    	<td>  <input type="text" id='q11'>   </td>
+    	<td>  <input type="text" id='q12'>   </td>
+    	<td>  <input type="text" id='q13'>   </td>
+    	<td>  <input type="text" id='q14'>   </td>
+    	<td>  <input type="text" id='q15'>   </td>
+    	<td>  <input type="text" id='q16'>   </td>
+    	<td>  <input type="text" id='q17'>   </td>
+    	<td>  <input type="text" id='q18'>   </td>
+    	<td>  <input type="text" id='q19'>   </td>
+    	<td>  <input type="text" id='q20'>   </td>
+    	<td>  <input type="text" id='q21'>   </td>
+    	<td>  <input type="text" id='q22'>   </td>    	
+   </tr>
+   <tr>
+   <td><strong>LBP </strong> </td>
+   <td> <input type="text" id='lbp'></td>
+   <td> <strong> Waterline <strong></td> 
+   <td> <input type="text" id='t'></td>
+   <td> <strong> Breadth </strong> </td>
+   <td> <input type="text" id='bredth'></td>
+   <td> <strong> Length </strong> </td>
+   <td> <input type="text" id='len'></td>
+   <td> <input type="button" value="calculate" onclick="arrayassign()"> </td>
+   </tr>
+ </table>
+</div>
+<div id="output1">
+<table>
+<tr>	
+<td> Volume Of Displacement    </td> <td>                   V </td> <td>=
+</td>
+<td id="v">
+</td>
+<td> m^3
+</td>
+</tr>
+<tr>
+<td>
+Displacement </td> <td>   </td> <td>=
+</td>
+<td id="delta">
+</td>
+<td> Tonnes</td>
+</tr>
+<tr>
+<td>
+Longitudinal Center of Bouyancy from Amidship   </td> <td>LCB </td> <td>= 
+</td>
+<td  id="lcb">
+</td>
+<td> m</td>
+</tr>
+<tr>
+<td>
+vertical centre of buoyancy above base line </td> <td>  VCB(kb) </td> <td>= 
+</td>
+<td  id="vcbkb">
+</td>
+<td> m </td>
+</tr>
+<tr>
+<td>
+water plane area coefficient </td> <td>  Aw </td> <td>=
+</td>
+<td id="Aw">
+</td>
+<td> m^2</td>
+</tr>
+<tr>
+<td>
+longitudnal centre of floatation from midship  </td> <td> d </td> <td>=
+</td>
+<td  id="d">
+</td>
+<td> m  </td>
+</tr>
+<tr>
+<td>
+tonnes per centimeter immersion  </td> <td> TPC </td> <td>=
+</td>
+<td  id="tpc">
+</td>
+<td>TONNES per CM </td>
+</tr>
+<tr>
+<td>
+longitudnal moment of inertia about midship  </td> <td> Is </td> <td>=
+</td>
+<td  id="Is">
+</td>
+<td>m^4 </td>
+</tr>
+<tr>
+<td>
+transverse moment of inertia about central line  </td> <td> It </td> <td>=
+</td>
+<td  id="It">
+</td>
+<td> m^4 </td>
+</tr>
+<tr>
+<td>
+longitudnal moment of inertia about longitudnal centre of floatation  </td> <td> Ilcf </td> <td>=
+</td>
+<td id="Ilcf">
+</td>
+<td>m^4</td>
+</tr>
+<tr>
+<td>
+transverse metacentric radius  </td> <td> BMt </td> <td>=
+</td>
+<td  id="BMt">
+</td>
+<td> m </td>
+</tr>
+</table>
+</div>
+<div id="output2">
+<table>
+<tr>
+<td>
+longitudnal metacentric radius  </td> <td> BMl </td> <td>=
+</td>
+<td  id="BMi">
+</td>
+<td> m </td>
+</tr>
+<tr>
+<td>
+transverse metacentre above base line </td> <td>  KMt </td> <td>=
+</td>
+<td  id="KMt">
+</td>
+<td> m </td>
+</tr>
+<tr>
+<td>longitudnal metacentre above base line  </td> <td> KMi </td> <td>=
+</td>
+<td id="KMi">
+</td>
+<td> m </td>
+</tr>
+<tr>
+<td>moment to change trim by 1 cm </td> <td>  MCT1cm </td> <td>= 
+</td>
+<td id="MCT1cm">
+</td>
+<td> tonn-m/cm </td>
+</tr>
+<tr>
+
+<td>block coefficient  </td> <td> Cb </td> <td>=
+</td>
+<td id="Cb">
+</td>
+</tr>
+<tr>
+<td>midship section area coefficient </td> <td>  Cm </td> <td>=
+</td>
+<td id="Cm">
+</td>
+</tr>
+<tr>
+<td>water plane area coefficient </td> <td>  Cw </td> <td>=                                
+</td>
+<td id="Cw">
+</td>
+</tr>
+<tr>
+<td>longitudinal prismatic coefficient  </td> <td> Cpl </td> <td>=
+</td>
+<td id="Cpl">
+</td>
+</tr>
+<tr>
+<td> vertical prismatic coefficient  </td> <td> Cpv </td> <td>=
+</td>
+<td id="Cpv">
+</td>
+</tr>
+<tr>
+<td>wetted surface area of hull </td> <td>  WSA </td> <td>= </td>
+<td id="wsa">
+</td>
+<td> m^2 </td>
+</tr>
+
+</table>
+</div>
+</div>
+</body>
+</html> 

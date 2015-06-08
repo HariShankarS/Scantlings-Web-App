@@ -1,0 +1,42 @@
+
+
+#header {
+ margin:auto;
+ width:50%;
+ background-color:#2EFEF7;
+ height:50px;
+ border:1px solid black;
+ padding:0px 20px 25px 150px;
+border-radius:5px;
+ }
+
+
+table{
+padding: 10px;
+background-color: rgba(88, 172, 250, 0.6);
+}
+
+td input { width: 70px;}
+
+/*#input td { width: 100px;}*/
+th {
+font-size: 14px;
+text-align: left;
+font-weight:bold;
+
+}
+#output1 {
+width:700px;
+font-family: "Times New Roman", Times, serif;
+font-size:20px;
+font-weight:solid;
+float:left;
+}
+#output2 {
+width:600px;
+font-family: "Times New Roman", Times, serif;
+font-size:20px;
+font-weight:solid;
+float:right;
+}
+
