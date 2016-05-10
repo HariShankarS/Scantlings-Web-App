@@ -1,0 +1,410 @@
+<!--
+   HOLTROP.html
+   
+   Copyright 2015 hari shankar <hari@hari-VPCCW25FN>
+   
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+   MA 02110-1301, USA.
+   
+   
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>holtropmennen</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="generator" content="Geany 1.24.1" />
+	<style>
+	body {
+		background-image: url("bground.jpg");
+	}
+	input {
+		width:83px;
+		border:none;
+	}
+	#header
+	{ 
+	color:black;
+	}	
+	#header h1{ 
+		margin: 0 auto;
+		padding: 0px 0px 0px 455px ;
+		text-shadow: 5px 5px 5px #121212;
+	}
+	#main {
+		float:left;
+		width:300px;
+	}
+	#app {
+		float:right;
+		width:300px;
+	}
+	#r h2 {
+		text-shadow: 5px 5px 5px #121212;
+	}
+
+	</style>
+	<script> 
+	var B5,B6,B7,B8,B9,B10,B11,B12,B13,B15,B17,B18,B21,G6,G7,G8,G9,G10,G12,G13,G16,B24,B25,B26,B27,B28,B29,B33,B34,B35,B36,B37,B38,B39,D38,E38,F38;
+	
+	function HOLTROP() {
+			B5 = parseFloat(document.getElementById("B5").value);
+			B6 = parseFloat(document.getElementById("B6").value); 
+			B7 = parseFloat(document.getElementById("B7").value);
+			B8 = parseFloat(document.getElementById("B8").value);
+			B9 = parseFloat(document.getElementById("B9").value);
+			B10 = parseFloat(document.getElementById("B10").value);
+			B11 = parseFloat(document.getElementById("B11").value);
+			B12 = parseFloat(document.getElementById("B12").value);
+			B13 = parseFloat(document.getElementById("B13").value);
+			B17 = parseFloat(document.getElementById("B17").value);
+			B18 = parseFloat(document.getElementById("B18").value);
+			B21 = parseFloat(document.getElementById("B21").value);
+			G6 = parseFloat(document.getElementById("G6").value); 
+			G7 = parseFloat(document.getElementById("G7").value);
+			G8 = parseFloat(document.getElementById("G8").value);
+			G9 = parseFloat(document.getElementById("G9").value);
+			G12 = parseFloat(document.getElementById("G12").value);
+			G13 = parseFloat(document.getElementById("G13").value);
+			G16 = parseFloat(document.getElementById("G16").value);
+		B26 = ((B6-B5)/2+B11)*100/B6;
+		B27 = B10/(B6*B7*B8);
+		B28 = B27/B13;
+		B29 = 0.5144*B21/Math.pow((9.812*B6),0.5);
+				
+
+
+
+		B34 = (0.075/Math.pow((Math.log10(B21*0.5144*B6/B18)-2),2));
+		B36 = B6*(1-B28+0.06*B28*B26/(4*B28-1));
+		B37 = B8/B6;
+
+		B24 = B6*(2*B8+B7)*Math.pow(B13,0.5)*(0.453+0.4425*B27-0.2862*B13-0.003467*B7/B8+0.3696*B12)+2.38*G12/B27;
+		B33 = 0.5*B17*B24*Math.pow((B21*0.5144),2)*B34;		
+
+		B25 = 1+89*Math.exp(-(Math.pow((B6/B7),0.80856))*Math.pow((1-B12),0.30484)*Math.pow((1-B28-(0.0225*B26)),0.6367)*Math.pow((B36/B7),0.34574)*Math.pow((100*(B10/Math.pow(B6,3))),0.16302));	
+		D38 = 0.479948;
+		E38 = 48.2*Math.pow((B37-0.02),2.078)+0.479948;
+		F38 = Math.pow(B37,0.2228446);
+		
+		if ( B37 < 0.02) {
+			B38 = D38;
+		}
+		else if ( B37 > 0.05) {
+			B38 = F38;
+		}
+		else {
+			B38 = E38;
+		}
+		B15 =  parseFloat(document.getElementById("B15").value);
+		B39 = 1+0.003*B15;
+
+		B35 = B39*(0.93+B38*Math.pow((B7/B36),0.92497)*Math.pow((0.95-B28),-0.521448)*Math.pow((1-B28+0.0225*B26),0.69060));
+		console.log(B35);
+
+
+
+		B42 = 0.5*B17*Math.pow((0.5144*B21),2)*G6*G7*B34;
+		B43 = 22*B17*Math.pow((B21*0.5144),2)*Math.pow(G8,2)*G9/7;
+		B44 = B42+B43;
+		B48 = B7/B6;
+			
+		if ( B48 < 0.11) {
+			B49 = 0.229577*Math.pow(B48,0.33333);
+		}
+		else if ( B48 > 0.25) {
+			B49 = 0.5-0.0625*1/B48;
+		}
+		else {
+			B49 = B48;
+		}
+			
+		B50 = 2223105*Math.pow(B49,3.78613)*Math.pow((B8/B7),1.07961)*Math.pow((90-B25),-1.37565);
+		
+		
+		B51 = Math.exp(-1.89*Math.pow((0.56*Math.pow(G12,1.5)/(B7*B8*(0.31*Math.pow(G12,0.5)+B9-G13))),0.5));
+		B52 = (0.56*Math.pow((G12+0.00000001),1.5)/(B7*B8*(0.31*Math.pow((G12+0.00000001),0.5)+B9-G13)));
+		B53 = 1-0.8*G16/(B7*B8*B13);
+		B54 = 1/B48;
+		
+		if(B54<12) {
+		B55 = 1.446*B28-0.03*B54;
+		}
+		else {
+		B55 = 1.446*B28-0.36;
+		}
+		B56 = B28;
+		
+		if(B56<0.8) {
+		B57 = 8.07981*B28-13.8673*Math.pow(B28,2)+6.984388*Math.pow(B28,3);
+		}
+		else {
+		B57 = 1.73014-0.7067*B56;
+		}
+		
+		B58 = 0.0140407*B6/B8-1.75254*Math.pow(B10,(1/3))/B6-4.79323*B48-B57;
+
+		B59 = B6*B6*B6/B10;
+		if(B59<512) {
+			B60 = -1.69385;
+		}
+		else if (B59 > 1727) {
+			B60 = 0;
+		}
+		else {
+			B60 = -1.69385+(B59-8)/2.36;
+		}
+		B61 = -0.9;
+		B62 = B60*Math.pow(B56,2)*Math.exp(-0.1*Math.pow(B29,-2));
+		B47 = B50*B51*B53*B10*B17*9.812*Math.exp(B58*Math.pow(B29,B61)+B62*Math.cos(B55*Math.pow(B29,-2)));
+		
+		B66 = 0.56*Math.pow((G12),0.5)/(B9-1.5*G13);
+		B67 = 0.5144*B21/Math.pow((9.812*(B9-G13-0.25*Math.pow(G12,0.5))+0.15*Math.pow((0.5144*B21),2)),0.5);
+
+		if (B66 == 0) {
+			B65 = 0;
+		}
+		else {
+			B65 = 0.11*Math.exp(-3*Math.pow(B66,-2))*Math.pow(B67,3)*Math.pow(G12,1.5)*B17*9.812/(1+Math.pow(B67,2));
+			
+		}
+			
+		if(G16 == 0) {
+			B71 = 0;
+		}
+		else {
+			B71 = 0.5144*B21/Math.pow((2*9.812*(G16)/(B7+B7*B12)),0.5);
+		}
+		if (B71 < 5) {
+			B72 = 0.2;
+		}
+		else {
+			B72 = 0;
+		}
+		
+		B70 = 0.5*B17*Math.pow((0.5144*B21),2)*G16*B72;
+
+		B75 = B9/B6;
+		
+		if (B75<0.04) {
+			B76 = B75;
+		}
+		else {
+		 B76 = 0.04;
+		 
+		}
+		B77 = 0.006*Math.pow((B6+100),-0.16)-0.00205+0.003*Math.pow((B6/7.5),0.5)*Math.pow(B27,4)*B51*(0.04-B76);
+		B78 = 0.5*B17*Math.pow((0.5144*B21),2)*B24*B77;
+		J33 = B33*B35+B44+B47+B65+B70+B78;
+		J34 = J33*0.5144*B21;
+		document.getElementById("Rf").innerHTML=B33.toFixed(3);
+		document.getElementById("Rappfinal").innerHTML=B44.toFixed(3);
+		document.getElementById("Rw").innerHTML=B47.toFixed(3);
+		document.getElementById("Rb").innerHTML=B65.toFixed(3);
+		document.getElementById("Rtr").innerHTML=B70.toFixed(3);
+		document.getElementById("Ra").innerHTML=B78.toFixed(3);
+		document.getElementById("Rtot").innerHTML=J33.toFixed(3);
+		document.getElementById("P").innerHTML=J34.toFixed(3);
+	
+	}
+	
+	</script>
+</head>
+
+<body>
+<div id ="header">
+	<h1>Holtrop Mennen Method</h1>
+</div>
+<div id = "main">
+<h2>	Main Dimensions	</h2>
+<table>
+	<tr>
+		<td><strong>L<sub>pp</sub> </strong>	</td>
+		<td> <input type ="value" id="B5"></td>
+		<td> m</td>
+	</tr>	
+	<tr>
+		<td><strong>L<sub>wl</sub> </strong>	</td>
+		<td> <input type ="value" id="B6"></td>
+		<td> m</td>
+	</tr>
+	<tr>
+		<td><strong>Breadth </strong></td>
+		<td> <input type ="value" id="B7"></td>
+		<td> m</td>
+
+	</tr>
+	<tr>	
+		<td><strong>Draught </strong></td>
+		<td> <input type ="value" id="B8"></td>
+		<td> m</td>
+	</tr>
+	<tr>	
+		<td><strong>Draft forward Tf </strong></td>
+		<td> <input type ="value" id="B9"></td>
+		<td> m</td>
+	</tr>
+	<tr>	
+		<td><strong>volume </strong></td>
+		<td> <input type ="value" id="B10"></td>
+		<td> m<sup>3</sup></td>
+	</tr>
+	<tr>	
+		<td><strong>LCB from (Mid LPP)  </strong></td>
+		<td> <input type ="value" id="B11"></td>
+		<td> m</td>
+	</tr>
+	<tr>
+		<td><strong>C<sub>wp</sub> </strong>	</td>
+		<td> <input type ="value" id="B12"></td>
+	
+	</tr>	
+	<tr>
+		<td><strong>C<sub>m</sub> </strong>	</td>
+		<td> <input type ="value" id="B13"></td>
+	</tr>
+	<tr>
+		<td> <strong> Stern shape </strong> </td>
+		<td>	<select id ="B15">
+				<option value ="-10"> V shaped </option>
+				<option value ="10"> U shaped </option>
+				<option value ="0"> NORMAL </option>
+				</select>	</td>
+	</tr>
+	<tr>
+		<td><strong> Density</strong>	</td>
+		<td><input type ="value" id="B17"> </td>
+		<td>Tonnes/m<sup>3</sup></td>
+	</tr>
+	<tr>	
+		<td><strong>Kinematic Viscosity </strong></td>
+		<td> <input type ="value" id="B18"></td>
+		<td> m<sup>2</sup>/sec</td>
+	</tr>
+	<tr>	
+		<td><strong> Velocity  </strong></td>
+		<td> <input type ="value" id="B21"></td>
+		<td> knots</td>
+	</tr>	
+		
+</table>
+</div>
+
+
+<div id ="main">
+<h2>Appendages</h2>
+<table>
+	<tr>
+		<td><strong>Total area </strong></td>
+		<td> <input type ="value" id="G6"></td>
+		<td> m<sup>2</sup></td>
+	</tr>
+	<tr>
+		<td><strong>Eq. Coeff. </strong></td>
+		<td> <input type ="value" id="G7"></td>
+		<td> (Sum of Indivudual area * Coeff / Total Area) </td>
+	</tr>
+	<tr>
+		<td><strong>Bow thruster </strong></td>
+		<td> <input type ="value" id="G8"></td>
+		<td> Tunnel Dia in metres </td>
+	</tr>
+	<tr>
+		<td><strong>Tunnel coeffiecient Cbto </strong></td>
+		<td> <input type ="value" id="G9"></td>
+	</tr>	
+</table>
+</div>
+<div id ="main">
+<h2> Bulb </h2>
+<table>
+	<tr>
+		<td><strong>Abt </strong></td>
+		<td> <input type ="value" id="G12"></td>
+	</tr>
+	<tr>
+		<td><strong>hB </strong></td>
+		<td> <input type ="value" id="G13"></td>
+		<td> (Pos of Centre of Transverse area Abt above the keel line) </td>
+	</tr>
+</table>
+<h2> Transom area </h2>
+<table>
+	<tr>
+		<td><strong>At </strong></td>
+		<td> <input type ="value" id="G16"></td>
+		<td> m<sup>2</sup></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type = "button" value ="calculate" onclick = "HOLTROP()" ></td>
+	</tr>
+</table>
+</div>
+<div id ="app">
+
+
+</div>
+ 
+<div id ="r">
+<h2>	Resistance	</h2>
+<table>
+	<tr>
+		<td><strong>R<sub>f</sub> </strong></td>
+		<td id ="Rf"></td>
+		<td> KN </td>
+	</tr>
+	<tr>
+		<td><strong>R<sub>app Final </sub> </strong></td>
+		<td id ="Rappfinal"></td>
+		<td> KN </td>
+	</tr>
+	<tr>
+		<td><strong>R<sub>w</sub> </strong></td>
+		<td id ="Rw"></td>
+		<td> KN </td>
+	</tr>
+	<tr>
+		<td><strong>R<sub>b</sub> </strong></td>
+		<td id ="Rb"></td>
+		<td> KN </td>
+	</tr>	<tr>
+		<td><strong>R<sub>tr</sub> </strong></td>
+		<td id ="Rtr"></td>
+		<td> KN </td>
+	</tr>	<tr>
+		<td><strong>R<sub>a</sub> </strong></td>
+		<td id ="Ra"></td>
+		<td> KN </td>
+	</tr>
+	<tr>
+		<td><strong>R<sub>total</sub> </strong></td>
+		<td id ="Rtot"></td>
+		<td> KN </td>
+	</tr>
+	<tr>
+		<td><strong>Power required </strong></td>
+		<td id ="P"></td>
+		<td> KW </td>
+	</tr>
+</table>
+</div>
+	   
+</body>
+
+</html>
