@@ -1,0 +1,1906 @@
+<!--
+   scanlings.html
+   
+   Copyright 2015 hari shankar <hari@hari-VPCCW25FN>
+   
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+   MA 02110-1301, USA.
+   
+   
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title> super structure calculations </title>
+	<style>
+	body {
+		background-image: url("bground.jpg");
+	}
+	td {
+	border:2px solid black;
+	}
+	td input {
+		width:150px;
+		border:none;
+	}
+	</style>
+	
+<script>
+var d5,d6,d7,d8,d9,d10,d11,d12;
+function basicdataassign() {
+d5 = parseFloat(document.getElementById("d5").value);
+d6 = parseFloat(document.getElementById("d6").value); 
+d7 = parseFloat(document.getElementById("d7").value);
+d8 = parseFloat(document.getElementById("d8").value);
+d9 = parseFloat(document.getElementById("d9").value);
+d10 = parseFloat(document.getElementById("d10").value);
+d11 = parseFloat(document.getElementById("d11").value);
+d12 = parseFloat(document.getElementById("d12").value);
+if ( d5 < 0 ) {
+	 alert("Error! You have entered a negative value for 'The Overall Length' ");
+}
+if ( d6 < 0 ) {
+	 alert("Error! You have entered a negative value for 'The Rule Length' ");
+}
+if ( d6 > d5 ) {
+	 alert("Error! 'The Rule Length shouldn't be greater than 'The Overall Length' ");
+}
+if ( d7 < 0 ) {
+	 alert("Error! You have entered a negative value for 'The Rule breadth' ");
+}
+if ( d8 < 0 ) {
+	 alert("Error! You have entered a negative value for 'The Depth to main deck' ");
+}
+if ( d9 < 0 ) {
+	 alert("Error! You have entered a negative value for 'Mean Design Draught' ");
+}
+if ( d9 > d8 ) {
+	 alert("Error! 'Mean Design Draught shouldn't be greater than 'The Depth to main deck' ");
+}
+if ( d10 < 0 ) {
+	 alert("Error! You have entered a negative value for 'The scantling Displacemnt' ");
+}
+if ( d11 < 0 ) {
+	 alert("Error! You have entered a negative value for 'Sea Water Density' ");
+}
+if ( d12 < 0 ) {
+	 alert("Error! You have entered a negative value for 'The Max. Speed' ");
+}
+if ( d13 < 0 ) {
+	alert("Error! The block coefficient shouldn't be negative ");
+}
+if ( d13 > 1 ) {
+	 alert("Error! The block coefficient shouldn't be greater than 1. ");
+}
+
+//cbcalculation(d10,d6,d7,d9,d11);
+}
+function cbcalculation() {
+	basicdataassign();
+	d13 = d10/(d11*d6*d7*d9);
+	document.getElementById("d13").innerHTML=d13.toFixed(3);
+
+}
+function min(a,b) {
+	if (a<b) {
+		return a ;
+	}
+	else {
+		return b ;
+	}
+}
+function max(a,b) {
+	if (a>b) {
+		return a ;
+	}
+	else {
+		return b ;
+	}
+}
+
+var D11,D12,D13,D14,D19,E25,E26,E27,E28,E29,E30,E31,E32,E33,K25,K26,K27,K28,H25,H26,H27,H28,H31,O24,O25,O26,O27,O28,L31,L32,D38,D39,D40,D41,D42,C51,C52,C53,C54,E51,E52,E53,E54,F51,F52,F53,F54,I51,I52,I53,I54,K51,K52,K53,K54,O51,O52,O53,O54,Q51,Q52,Q53,Q54,R51,R52,R53,R54,D64,D65,D66,D67,D68,D69,H64,H65,H66,H67,H68,H69,H73,H74,H75,H76,H77,H78,D73,D74,D75,D76,D89,D90,D91,H89,H90,H91,C95,C96,C97,C98,C99,C100,D95,D96,D97,D98,D99,D100,G95,G96,G97,G98,G99,G100,H95,H96,H97,H98,H99,H100,C105,C106,C107,C108,C109,C110,G105,G106,G107,G108,G109,G110,D121,D122,D123,D124,D125,D126,D127,D128,D129,D130,D131,D132,D133,D134,D142,D143,D144,I142,I143,I144;
+
+    
+function pressurevaluesassign() {
+        basicdataassign();
+     
+     // L Cb B T 
+     
+     D11 = parseFloat(d6);
+    if (parseFloat(d13) < 0.6) {
+		D12 = 0.6;
+	}
+	else if ( parseFloat(d13) > 0.8 ) {
+		D12 = 0.8;
+	}
+	else {
+		D12 = parseFloat(d13); 
+	}
+    D13 = parseFloat(d7);
+    D14 = parseFloat(d9);
+    
+    
+    // STEM STERN AFT END X  
+    
+    
+    D19 = parseFloat(document.getElementById("D19").value);
+    D20 = parseFloat(document.getElementById("D20").value);
+    D21 = parseFloat(document.getElementById("D21").value);
+	if ( D19 > d6 ) {
+		alert("Error! You have entered a value greater than 'The Rule Length' ");
+	}
+	if ( D20 > d6 ) {
+		alert("Error! You have entered a value greater than 'The Rule Length' ");
+	}
+	if ( D21 > d6 ) {
+		alert("Error! You have entered a value greater than 'The Rule Length' ");
+	}
+	if ( D19 < 0 ) {
+		alert("Error! You have entered a negative value for Stem X ");
+	}
+	if ( D20 < 0 ) {
+		alert("Error! You have entered a negative value for Stern X ");
+	}
+	if ( D21 < 0 ) {
+		alert("Error! You have entered a negative value for AftEnd X ");
+	}
+    
+    // COEFFICIENT a 
+    
+    E25 = min(2+(D11/120),4.5);
+    E26 = min(1+(D11/120),3.5);
+    E27 = min(0.5+(D11/150),2.5);
+    E28 = min((0.9*(0.5+(D11/150))),2.25);
+    E29 = min((0.8*(0.5+(D11/150))),2);
+    E30 = min((0.5+(D11/150)),2.5);
+    E31 = min((0.9*(0.5+(D11/150))),2.25);
+    E32 = min((0.8*(0.5+(D11/150))),2);
+    if (D21/D11 <= 0.5) {
+	E33 = min((0.7+(D11/1000)-((0.8*D21)/D11)),(1-((0.8*D21)/D11)));
+	}
+	else {
+	E33 = min((0.5+(D11/1000)-((0.4*D21)/D11)),(0.8-((0.4*D21)/D11)));
+	}
+	
+	// coefficient b 
+	
+	K25 = document.getElementById("K25").value;
+	K26 = document.getElementById("K26").value;
+	K27 = document.getElementById("K27").value;
+	K28 = document.getElementById("K28").value;
+
+	if ( K25 > d7 ) {
+		alert("Error! You have entered a value greater than 'The Rule Breadth' ");
+	}
+	if ( K26 > d7 ) {
+		alert("Error! You have entered a value greater than 'The Rule Breadth' ");
+	}
+	if ( K27 > d7 ) {
+		alert("Error! You have entered a value greater than 'The Rule Breadth' ");
+	}
+	if ( K28 < d7 ) {
+		alert("Error! You have entered a value greater than 'The Rule Breadth' ");
+	}
+	if ( K25 < 0 ) {
+		alert("Error! You have entered a negative value for Lower Tier of Deck house " );
+	}
+	if ( K26 < 0 ) {
+		alert("Error! You have entered a negative value for 2nd Tier of Deck house ");
+	}
+	if ( K27 < 0 ) {
+		alert("Error! You have entered a negative value for 3rd Tier of Deck house ");
+	}    
+	if ( K28 < 0 ) {
+		alert("Error! You have entered a negative value for 4th Tier of Deck house ");
+	}    
+    // Coefficient c 
+    
+    H25 = 0.3+(0.7*(K25/D13));
+    H26 = 0.3+(0.7*(K26/D13));
+    H27 = 0.3+(0.7*(K27/D13));
+    H28 = 0.3+(0.7*(K28/D13));
+    
+    // coefficient f
+    
+    H31 = ((D11/10)*Math.exp(-D11/300))-(1-Math.pow((D11/150),2));
+    
+    // Z from baseline
+    
+    O24 = parseFloat(document.getElementById("O24").value);
+    O25 = parseFloat(document.getElementById("O25").value);
+	O26 = parseFloat(document.getElementById("O26").value);
+	O27 = parseFloat(document.getElementById("O27").value);
+	O28 = parseFloat(document.getElementById("O28").value);
+
+	if ( O24 < 0 ) {
+		alert("Error! You have entered a negative value for main deck" );
+	}
+	
+	if ( O25 < 0 ) {
+		alert("Error! You have entered a negative value for Lower Tier of Deck house " );
+	}
+	if ( O26 < 0 ) {
+		alert("Error! You have entered a negative value for 2nd Tier of Deck house ");
+	}
+	if ( O27 < 0 ) {
+		alert("Error! You have entered a negative value for 3rd Tier of Deck house ");
+	}    
+	if ( O28 < 0 ) {
+		alert("Error! You have entered a negative value for 4th Tier of Deck house ");
+	}    	
+	// COEFFICIENT b
+	
+	if ((D19/D11)<=0.45) {
+	L31 = 1+Math.pow((((D19/D11)-0.45)/(D12+0.2)),2);
+	}
+	else {
+	L31 = 1+1.5*Math.pow((((D19/D11)-0.45)/(D12+0.2)),2);	
+	}	
+	if ((D20/D11)<=0.45) {
+	L32 = 1+Math.pow((((D20/D11)-0.45)/(D12+0.2)),2);
+	}
+	else {
+	L32 = 1+1.5*Math.pow((((D20/D11)-0.45)/(D12+0.2)),2);
+	}
+	
+	// MINIMUM lateral pressure
+	
+	D38 = 25+(0.1*D11); 
+	D39 = 12.5+(0.05*D11);
+	D40 = 10+(0.04*D11);
+	D41 = 12.5+(0.05*D11);
+	D42 = 10+(0.04*D11);
+	
+	// Lateral pressure on fornt, side and aft bulkheads (Lower tier)
+	
+	C51 = 10*E25*H25*((L31*H31)-(((O25 + O24)/2)-D14));
+	C52 = 10*E30*H25*((L31*H31)-(((O25 + O24)/2)-D14));
+	C53 = 10*E30*H25*((L32*H31)-(((O25 + O24)/2)-D14));
+	C54 = 10*E33*H25*((L32*H31)-(((O25 + O24)/2)-D14));
+	E51 = D38;
+	E52 = D41;
+	E53 = D41;
+	E54 = D41;
+	F51 = max(C51,E51);
+	F52 = max(C52,E52);
+	F53 = max(C53,E53);
+	F54 = max(C54,E54);
+
+	// Lateral pressure on fornt, side and aft bulkheads (Second tier)
+	
+	I51 = 10*E26*H26*((L31*H31)-(((O25+O26)/2)-D14));
+	I52 = 10*E30*H26*((L31*H31)-(((O25+O26)/2)-D14));
+	I53 = 10*E30*H26*((L32*H31)-(((O25+O26)/2)-D14));
+	I54 = 10*E33*H26*((L32*H31)-(((O25+O26)/2)-D14));
+	K51 = D39;
+	K52 = D41;
+	K53 = D41;
+	K54 = D41;
+	L51 = max(I51,K51);
+	L52 = max(I52,K52);
+	L53 = max(I53,K53);
+	L54 = max(I54,K54);
+
+	
+	//Lateral pressure on fornt, side and aft bulkheads (Third tier)
+	
+	O51 = 10*E27*H27*((L31*H31)-(((O27+O26)/2)-D14));
+	O52 = 10*E30*H27*((L31*H31)-(((O27+O26)/2)-D14));
+	O53 = 10*E30*H27*((L32*H31)-(((O27+O26)/2)-D14));
+	O54 = 10*E33*H27*((L32*H31)-(((O27+O26)/2)-D14));
+	Q51 = D39;
+	Q52 = D41;
+	Q53 = D41;
+	Q54 = D41;
+	R51 = max(O51,Q51);
+	R52 = max(O52,Q52);
+	R53 = max(O53,Q53);
+	R54 = max(O54,Q54);
+
+	
+	// PRESSURE ON EXPOSED DECKS (STILL WATER PRESSURE)
+	D64 = D11;
+	D65 = D19;
+	D66 = parseFloat(document.getElementById("D66").value);
+	if ( D66 < 0 ) {
+		alert("Error! You have entered a negative value for Z " );
+	}
+	D67 = d13;
+	D68 = d12;
+	D69 = d9;
+
+	// Z from base line 
+	H64 = document.getElementById("H64").value;
+	H65 = document.getElementById("H65").value;
+	H66 = document.getElementById("H66").value;
+	H67 = document.getElementById("H67").value;
+	H68 = document.getElementById("H68").value;
+	H69 = document.getElementById("H69").value;
+
+	if ( H64 < 0 ) {
+		alert("Error! You have entered a negative value for Lower Tier Lower End" );
+	}
+	
+	if ( H65 < 0 ) {
+		alert("Error! You have entered a negative value for Lower Tier Upper End " );
+	}
+	if ( H66 < 0 ) {
+		alert("Error! You have entered a negative value for 2nd Tier Lower End ");
+	}
+	if ( H67 < 0 ) {
+		alert("Error! You have entered a negative value for 2nd Tier Upper End");
+	}    
+	if ( H68 < 0 ) {
+		alert("Error! You have entered a negative value for 3rd Tier Lower End");
+	}    	
+	if ( H69 < 0 ) {
+		alert("Error! You have entered a negative value for 3rd Tier Upper End");
+	}    	
+	
+	// PI
+	
+	H73 = 1;
+	H74 = 0.75;
+	H75 = 0.56;
+	H76 = 0.42;
+	H77 = 0.32;
+	H78 = 0.25;
+	
+	// PRESSURE ON EXPOSED DECKS (STILL WATER PRESSURE)
+	
+	D73 = 10*H75;
+	D74 = 10*H76;
+	D75 = 10*H77;
+	D76 = 10*H78;
+	
+	// PRESSURE ON EXPOSED DECKS (WAVE PRESSURE)
+	//case a 
+	D89 = 1;
+	D90 = max((D89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-D66+D69),0.8);
+	D91 = max((D89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-D66+D69),0.8);
+	// case b 
+	H89 = 0.5;
+	H90 = max((H89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-D66+D69),0.8);
+	H91 = max((H89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-D66+D69),0.8);
+	// Hf H CASE a
+	C95 = max((D89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H64+D69),0.8);
+	C96 = max((D89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H65+D69),0.8);
+	C97 = max((D89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H66+D69),0.8);
+	C98 = max((D89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H67+D69),0.8);
+	C99 = max((D89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H68+D69),0.8);
+	C100 = max((D89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H69+D69),0.8);
+	// Hf H case b
+	D95 = max((D89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H64+D69),0.8);
+	D96 = max((D89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H65+D69),0.8);
+	D97 = max((D89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H66+D69),0.8);
+	D98 = max((D89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H67+D69),0.8);
+	D99 = max((D89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H68+D69),0.8);
+	D100 = max((D89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H69+D69),0.8);
+	
+	G95 = max((H89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H64+D69),0.8);
+	G96 = max((H89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H65+D69),0.8);
+	G97 = max((H89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H66+D69),0.8);
+	G98 = max((H89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H67+D69),0.8);
+	G99 = max((H89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H68+D69),0.8);
+	G100 = max((H89*(2.66*Math.pow((0.75-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H69+D69),0.8);
+	
+	H95 = max((H89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H64+D69),0.8);
+	H96 = max((H89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H65+D69),0.8);
+	H97 = max((H89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H66+D69),0.8);
+	H98 = max((H89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H67+D69),0.8);
+	H99 = max((H89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H68+D69),0.8);
+	H100 = max((H89*(2.66*Math.pow(((D65/D64)-0.7),2)+0.14)*Math.pow((D68*D64/D67),0.5)-H69+D69),0.8);
+	
+	
+	// Pressure on exposed decks (Wave pressure) a
+	if( 0 < D65/D64 && D65/D64 <=0.5 ) {
+	C105 = 17.5*H75;
+	C106 = 17.5*H75;
+	C107 = 17.5*H76;
+	C108 = 17.5*H76;
+	C109 = 17.5*H77;
+	C110 = 17.5*H77;
+	
+	G105 = 17.5*H75;
+	G106 = 17.5*H75;
+	G107 = 17.5*H76;
+	G108 = 17.5*H76;
+	G109 = 17.5*H77;
+	G110 = 17.5*H77;
+	
+	}
+	else if( 0.5 < D65/D64 && D65/D64 < 0.75 ) {	
+	C105 = (17.5+((19.6*Math.pow((C95),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H75 ;
+	C106 = (17.5+((19.6*Math.pow((C96),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H75 ;
+	C107 = (17.5+((19.6*Math.pow((C97),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H76 ;
+	C108 = (17.5+((19.6*Math.pow((C98),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H76 ;
+	C109 = (17.5+((19.6*Math.pow((C99),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H77 ;
+	C110 = (17.5+((19.6*Math.pow((C100),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H77 ;
+	
+	G105 = (17.5+((19.6*Math.pow((G95),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H75 ;
+	G106 = (17.5+((19.6*Math.pow((G96),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H75 ;
+	G107 = (17.5+((19.6*Math.pow((G97),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H76 ;
+	G108 = (17.5+((19.6*Math.pow((G98),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H76 ;
+	G109 = (17.5+((19.6*Math.pow((G99),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H77 ;
+	G110 = (17.5+((19.6*Math.pow((G100),0.5)-17.5)/0.25)*((D65/D64)-0.5))*H77 ;
+
+	} 
+	else { 
+	C105 = 19.6*H75*Math.pow((D95),0.5);
+	C106 = 19.6*H75*Math.pow((D96),0.5);
+	C107 = 19.6*H76*Math.pow((D97),0.5);
+	C108 = 19.6*H76*Math.pow((D98),0.5);
+	C109 = 19.6*H77*Math.pow((D99),0.5);
+	C110 = 19.6*H77*Math.pow((D100),0.5);
+
+	G105 = 19.6*H75*Math.pow((H95),0.5);
+	G106 = 19.6*H75*Math.pow((H96),0.5);
+	G107 = 19.6*H76*Math.pow((H97),0.5);
+	G108 = 19.6*H76*Math.pow((H98),0.5);
+	G109 = 19.6*H77*Math.pow((H99),0.5);
+	G110 = 19.6*H77*Math.pow((H100),0.5);
+	}
+	
+
+	
+	D121 = Math.pow(( Math.pow(D134,2)+(Math.pow(D133,2)*D125*Math.pow(D123,2))),0.5);
+	D122 = D19;
+	D123 = D11;
+	D124 = d13;
+	D125 = max((1.2*Math.pow((D122/D123),2)-1.1*(D122/D123)+0.2),0.018);
+	D126 = 11.44-Math.abs(Math.pow(((D123-250)/110),3));
+	D127 = d12;
+	D128 = 0.164*D127/Math.pow(D123,0.5);
+	D129 = document.getElementById("D129").value;
+	if ( D129 < 0 ) {
+		alert("Error! You have entered a negative value for Navigational Coefficient" );
+	}
+	if ( D129 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Navigational Coefficient" );
+	}
+	D130 = D129*(0.76*D128+1.875*(D126/D123));
+	D131 = 0.328*D130*(1.32-(D126/D123))*Math.pow((0.6/D124),0.75);
+	D132 = 0.575*Math.pow(D123,0.5);
+	D133 = D131*Math.pow((44/(7*D132)),2);
+	D134 = D130*9.81;
+	D121 = Math.pow(( Math.pow(D134,2)+(Math.pow(D133,2)*D125*Math.pow(D123,2))),0.5);
+	// DOUBT
+	// Pressure on deck structures(STILL WATER pressures)
+	D142 = 15;
+	D143 = 15;
+	D144 = 7.5;
+	
+	// Pressure on deck structures(inertial pressures)
+	I142 = D142*D121/9.81;
+	I143 = D143*D121/9.81;
+	I144 = D144*D121/9.81;
+	
+}
+
+// THICKNESS CALCULATIONS
+
+
+var CT10,CT11,CT12,CT13,ET15,ET16,ET17,ET18,ET19,ET20,CT24,CT25,CT26,CT27,HT24,HT25,MT24,MT25,MT26,MT27,DT41,DT42,DT43,IT41,IT42,IT43,ET46,ET47,ET48,ET49,ET50,ET51,ET52,ET53,ET54,ET55,CT59,CT60,CT61,HT59,LT59;
+function thicknesscalculations() {
+	pressurevaluesassign();
+	CT10 = F51;
+	CT11 = max(F52,F53);
+	CT12 = F54;
+	CT13 = max(L51,L52,L53,L54);
+
+	ET15 = document.getElementById("ET15").value;
+	if ( ET15 < 0 ) {
+		alert("Error! You have entered a negative value for 'The Rule Length' ");
+	}
+	if ( ET15 > d5 ) {
+		alert("Error! 'The Rule Length' shouldn't be greater than 'The Overall Length' ");
+	}
+	ET16 = document.getElementById("ET16").value;
+	if ( ET16 < 0 ) {
+		alert("Error! You have entered a negative value for 'The Minimum guarenteed Yield stress' ");
+	}
+	ET17 = document.getElementById("ET17").value;
+	if ( ET17 < 0 ) {
+		alert("Error! You have entered a negative value for 'Joint coeffiecient' ");
+	}
+	if ( ET17 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Joint Coefficient" );
+	}	
+	ET18 = 235/(ET17*ET16);
+	ET19 = document.getElementById("ET19").value;
+	if ( ET19 < 0 ) {
+		alert("Error! You have entered a negative value for 'Corrosion addition' ");
+	}
+	ET20 = document.getElementById("ET20").value;
+	if ( ET20 < 0 ) {
+		alert("Error! You have entered a negative value for 'Spacing of Ordinary stiffeners' ");
+	}
+
+	// THICKNESS
+	CT24 = (0.95*ET20*Math.pow((ET18*CT10),0.5))-ET19;
+	CT25 = (0.95*ET20*Math.pow((ET18*CT11),0.5))-ET19;
+	CT26 = (0.95*ET20*Math.pow((ET18*CT12),0.5))-ET19;
+	CT27 = (0.95*ET20*Math.pow((ET18*CT13),0.5))-ET19;
+
+	
+	// MINIMUM REQUIRED THICKNESS
+	
+	HT24 = ((5+0.01*ET15)*Math.pow(ET18,0.5))-ET19;
+	HT25 = ((4+0.01*ET15)*Math.pow(ET18,0.5))-ET19;
+
+	// REQUIRED NET THICKNESS
+	MT24 = document.getElementById("MT24").value;
+	MT25 = document.getElementById("MT25").value;
+	MT26 = document.getElementById("MT26").value;
+	MT27 = document.getElementById("MT27").value;
+
+	if ( MT24 < 0 ) {
+		alert("Error! You have entered a negative value for 'Lower tier - Front' ");
+	}
+	if ( MT25 < 0 ) {
+		alert("Error! You have entered a negative value for 'Lower tier -Side' ");
+	}
+	if ( MT26 < 0 ) {
+		alert("Error! You have entered a negative value for 'Lower tier -Aft End' ");
+	}
+	if ( MT27 < 0 ) {
+		alert("Error! You have entered a negative value for 'Second Tier and above' ");
+	}
+
+	// Pressure on deck structures(STILL WATER pressures)
+	DT41 = D142;
+	DT42 = D143;
+	DT43 = D144;
+	// Pressure on deck structures(inertial pressures)
+	IT41 = I142;
+	IT42 = I143;
+	IT43 = I144;
+
+	ET46 = document.getElementById("ET46").value;
+	ET47 = document.getElementById("ET47").value;
+	if ( ET46 < 0 ) {
+		alert("Error! You have entered a negative value for 'Longer Side of the Plate panel' ");
+	}
+	if ( ET47 < 0 ) {
+		alert("Error! You have entered a negative value for 'Shorter Side of the Plate panel' ");
+	}
+	ET48 = min((1.21*Math.pow((1+0.33*Math.pow((ET47/ET46),2)-0.69*ET47/ET46),0.5)),1);
+	ET49 = document.getElementById("ET49").value;
+	if ( ET49 < 0 ) {
+		alert("Error! You have entered a negative value for 'Radius Of Curvature' ");
+	}	
+// DOUBT
+	ET50 = document.getElementById("ET50").value;
+	ET51 = document.getElementById("ET51").value;
+	ET52 = document.getElementById("ET52").value;
+	ET53 = document.getElementById("ET53").value;
+	ET54 = document.getElementById("ET54").value;
+	ET55 = document.getElementById("ET55").value;
+	if ( ET50 < 0 ) {
+		alert("Error! You have entered a negative value for 'Coefficient of curvature of panel' ");
+	}	
+	if ( ET51 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}	
+	if ( ET52 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}		
+	if ( ET53 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}	
+	if ( ET54 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}		
+	if ( ET55 < 0 ) {
+		alert("Error! You have entered a negative value for 'Minimum yield stress of the Material ' ");
+	}			
+// THICKNESS 
+ 
+ CT59 = 14.9*ET48*ET50*ET47*Math.pow((ET51*ET52*((ET53*DT41+ET54*IT41)/ET55)),0.5);
+ CT60 = 14.9*ET48*ET50*ET47*Math.pow((ET51*ET52*((ET53*DT42+ET54*IT42)/ET55)),0.5);
+ CT61 = 14.9*ET48*ET50*ET47*Math.pow((ET51*ET52*((ET53*DT43+ET54*IT43)/ET55)),0.5);
+
+// DOUBT
+
+ HT59 = 5;
+ LT59 = 5;
+}
+
+var CS10,CS11,CS12,CS13,CS16,DS17,DS18,DS19,DS20,DS21,DS22,DS26,DS27,DS28,DS29,DS42,DS43,DS44,IS42,IS43,IS44,ES47,ES48,ES49,ES51,ES52,ES53,ES54,ES55,ES56,ES57,DS60,DS61,DS62,IS60,IS61,IS62;
+
+
+function stiffnerscalculations() {
+	thicknesscalculations();
+
+	CS10 = F51;
+	CS11 = max(F52,F53);
+	CS12 = F54;
+	CS13 = max(max(L51,L52),max(L53,L54));
+	DS16 = parseFloat(document.getElementById("DS16").value);
+	if ( DS16 < 0 ) {
+		alert("Error! You have entered a negative value for 'Span of the Ordinary Stiffener' ");
+	}		
+
+	DS17 = parseFloat(document.getElementById("DS17").value);
+	if ( DS17 < 0 ) {
+		alert("Error! You have entered a negative value for 'Spacing of the Ordinary Stiffener' ");
+	}		
+	DS18 = parseFloat(document.getElementById("DS18").value);
+	if ( DS18 < 0 ) {
+		alert("Error! You have entered a negative value for 'Coefficient depending on the stiffener end connections' ");
+	}		
+
+	DS19 = ET18;
+	DS20 = parseFloat(document.getElementById("DS20").value);
+	if ( DS20 < 0 ) {
+		alert("Error! You have entered a negative value for 'CORROSION ADDITION' ");
+	}
+	DS21 = parseFloat(document.getElementById("DS21").value);
+	if ( DS21 < 0 ) {
+		alert("Error! You have entered a negative value for 'coeffiecient' ");
+	}
+	if ( DS21 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Coefficient" );
+	}	
+	DS22 = parseFloat(document.getElementById("DS22").value);
+	if ( DS22 < 0 ) {
+		alert("Error! You have entered a negative value for 'coeffiecient' ");
+	}
+	if ( DS22 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Coefficient" );
+	}		
+	DS26 = (0.35*DS18*DS19*DS17*Math.pow(DS16,2)*CS10*(1-DS21*DS20))-DS22*DS20;
+	DS27 = (0.35*DS18*DS19*DS17*Math.pow(DS16,2)*CS11*(1-DS21*DS20))-DS22*DS20;
+	DS28 = (0.35*DS18*DS19*DS17*Math.pow(DS16,2)*CS12*(1-DS21*DS20))-DS22*DS20;
+	DS29 = (0.35*DS18*DS19*DS17*Math.pow(DS16,2)*CS13*(1-DS21*DS20))-DS22*DS20;
+
+	document.getElementById("DS26").innerHTML=DS26.toFixed(3);
+	document.getElementById("DS27").innerHTML=DS27.toFixed(3);
+	document.getElementById("DS28").innerHTML=DS28.toFixed(3);
+	document.getElementById("DS29").innerHTML=DS29.toFixed(3);
+
+	DS42 = D142;
+	DS43 = D143;
+	DS44 = D144;
+	IS42 = I142;
+	IS43 = I143;
+	IS44 = I144;
+
+	ES47 = parseFloat(document.getElementById("ES47").value);
+	ES48 = parseFloat(document.getElementById("ES48").value);
+	ES49 = parseFloat(document.getElementById("ES49").value);
+	ES50 = parseFloat(document.getElementById("ES50").value);
+	ES51 = parseFloat(document.getElementById("ES51").value);
+	ES52 = parseFloat(document.getElementById("ES52").value);
+	ES53 = parseFloat(document.getElementById("ES53").value);
+	ES54 = parseFloat(document.getElementById("ES54").value);
+	ES55 = parseFloat(document.getElementById("ES55").value);
+	ES56 = parseFloat(document.getElementById("ES56").value);
+	ES57 = 45/DS19;
+	if ( ES47 < 0 ) {
+		alert("Error! You have entered a negative value for 'Coefficient' ");
+	}	
+	if ( ES47 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Coefficient" );
+	}		
+	if ( ES48 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}	
+	if ( ES49 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}		
+	if ( ES50 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}	
+	if ( ES51 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}		
+	if ( ES52 < 0 ) {
+		alert("Error! You have entered a negative value for 'Minimum yield stress of the Material ' ");
+	}			
+
+	if ( ES53 < 0 ) {
+		alert("Error! You have entered a negative value for 'Coefficient' ");
+	}	
+	if ( ES53 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Coefficient" );
+	}		
+
+	if ( ES54 < 0 ) {
+		alert("Error! You have entered a negative value for 'Coefficient' ");
+	}	
+	if ( ES54 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Coefficient" );
+	}			
+	if ( ES55 < 0 ) {
+		alert("Error! You have entered a negative value for 'Span of the Ordinary Stiffener' ");
+	}		
+
+	if ( ES56 < 0 ) {
+		alert("Error! You have entered a negative value for 'Spacing of the Ordinary Stiffener' ");
+	}			
+	DS60 = ES47*ES48*ES49*ES53*((ES50*DS42+ES51*IS42)/(12*(ES52-ES48*ES49*ES57)))*(1-(ES56/(2*ES55)))*ES56*Math.pow(ES55,2)*Math.pow(10,3);
+	DS61 = ES47*ES48*ES49*ES53*((ES50*DS43+ES51*IS43)/(12*(ES52-ES48*ES49*ES57)))*(1-(ES56/(2*ES55)))*ES56*Math.pow(ES55,2)*Math.pow(10,3);
+	DS62 = ES47*ES48*ES49*ES53*((ES50*DS44+ES51*IS44)/(12*(ES52-ES48*ES49*ES57)))*(1-(ES56/(2*ES55)))*ES56*Math.pow(ES55,2)*Math.pow(10,3);
+	IS60 = 10*ES48*ES49*ES54*((ES50*DS42+IS42*ES51)/ES52)*(1-(ES56/(2*ES55)))*ES56*ES55;
+	IS61 = 10*ES48*ES49*ES54*((ES50*DS43+IS43*ES51)/ES52)*(1-(ES56/(2*ES55)))*ES56*ES55;
+	IS62 = 10*ES48*ES49*ES54*((ES50*DS44+IS44*ES51)/ES52)*(1-(ES56/(2*ES55)))*ES56*ES55;
+	
+	
+	document.getElementById("DS60").innerHTML=DS60.toFixed(3);
+	document.getElementById("DS61").innerHTML=DS61.toFixed(3);
+	document.getElementById("DS62").innerHTML=DS62.toFixed(3);
+	document.getElementById("IS60").innerHTML=IS60.toFixed(3);
+	document.getElementById("IS61").innerHTML=IS61.toFixed(3);
+	document.getElementById("IS62").innerHTML=IS62.toFixed(3);	
+
+}
+var CP11,CP12,CP13,CP14,GP11,GP12,GP13,GP14,GP15,GP16,IP11,IP12,IP13,IP14,IP15,IP16,EP18,EP19,EP20,EP21,EP22,EP23,EP24,EP25,EP26,EP27,CP31,CP32,CP33,DP31,DP32,DP33,DP31,DP32,DP33,DP31,DP32,DP33,EP31,EP32,EP33,FP31,FP32,FP33,GP31,GP32,GP33,HP31,HP32,HP33,IP31,IP32,IP33,JP31,JP32,JP33,KP31,KP32,KP33,LP31,LP32,LP33,CP37,CP38,CP39,GP37,GP38,GP39,DP52,DP53,EP52,EP53,EP54,JP52,JP53,KP52,KP53,KP54,CP71,DP71,CP72,DP72,CP73,DP73,CP74,DP74,CP78,CP79,CP80,EP78,EP79,EP80,JP78,JP79,JP80,LP78,LP79,LP80,CP86,CP87,CP88,EP86,EP87,EP88,JP86,JP87,JP88,LP86,LP87,LP88,DP101,DP102,DP103,IP101,IP102,IP103,EP107,EP108,EP109,CP111,CP112,CP116,CP117,DP116,DP117,EP116,EP117,FP116,FP117,GP116,GP117,HP116,HP117,IP116,IP117;
+function primary() {
+	stiffnerscalculations();
+	CP11 = CS10;
+	CP12 = CS11;
+	CP13 = CS12;
+	CP14 = CS13;
+	GP11 = D73;
+	GP12 = D73;
+	GP13 = D74;
+	GP14 = D74;
+	GP15 = D75;
+	GP16 = D75;
+	IP11 = max(C105,G105);
+	IP12 = max(C106,G106);
+	IP13 = max(C107,G107);
+	IP14 = max(C108,G108);
+	IP15 = max(C109,G109);
+	IP16 = max(C110,G110);
+	EP18 = ET18;
+	EP19 =  parseFloat(document.getElementById("EP19").value);
+	EP20 =  parseFloat(document.getElementById("EP20").value);
+	EP21 =  parseFloat(document.getElementById("EP21").value);
+	EP22 =  parseFloat(document.getElementById("EP22").value);
+	EP23 =  parseFloat(document.getElementById("EP23").value);
+	EP24 =  parseFloat(document.getElementById("EP24").value);
+	EP25 =  parseFloat(document.getElementById("EP25").value);
+	EP26 = 45/EP18;
+	EP27 = parseFloat(document.getElementById("EP27").value);
+	if ( EP19 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}	
+	if ( EP20 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}		
+	if ( EP21 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}	
+	if ( EP22 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}		
+	if ( EP23 < 0 ) {
+		alert("Error! You have entered a negative value for 'Minimum yield stress of the Material ' ");
+	}			
+
+	if ( EP24 < 0 ) {
+		alert("Error! You have entered a negative value for 'Coefficient' ");
+	}	
+	if ( EP24 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Coefficient" );
+	}		
+
+	if ( EP25 < 0 ) {
+		alert("Error! You have entered a negative value for 'Coefficient' ");
+	}	
+	if ( EP25 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Coefficient" );
+	}
+	if ( EP27 < 0 ) {
+		alert("Error! You have entered a negative value for 'Boundary Coefficient' ");
+	}	
+	if ( EP27 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for 'Boundary Coefficient" );
+	}
+	//doubt
+	KP31 = 2.6;
+	KP32 = 3.1;
+	KP33 = 2.5;
+	LP31 = 2.1;
+	LP32 = 2.1;
+	LP33 = 2.1; 
+	CP31 = (0.2*KP31)*KP31;
+	CP32 = (0.2*KP32)*KP32;
+	CP33 = (0.2*KP33)*KP33;
+	DP31 = ((EP21*GP11+EP22*IP11)*CP31)+((EP21*GP13+EP22*IP13)*CP32)+((EP21*GP15+EP22*IP15)*CP33);
+	DP32 = ((EP21*GP13+EP22*IP13)*CP32)+((EP21*GP15+EP22*IP15)*CP33);
+	DP33 = ((EP21*GP15+EP22*IP15)*CP33);
+
+	// doubt
+	EP31 = 45;
+	EP32 = 44;
+	EP33 = 38;
+	FP31 = (10*DP31)/EP31;
+	FP32 = (10*DP32)/EP32;
+	FP33 = (10*DP33)/EP33;
+	GP31 = 1+0.2*((GP11-GP12)/(GP11+GP12));
+	GP32 = 1+0.2*((GP13-GP14)/(GP13+GP14));
+	GP33 = 1+0.2*((GP15-GP16)/(GP15+GP16));
+	HP31 = 1+0.2*((IP11-IP12)/(IP11+IP12));
+	HP32 = 1+0.2*((IP13-IP14)/(IP13+IP14));
+	HP33 = 1+0.2*((IP15-IP16)/(IP15+IP16));
+	IP31 = 1+0.4*((GP11-GP12)/(GP11+GP12));
+	IP32 = 1+0.4*((GP13-GP14)/(GP13+GP14));
+	IP33 = 1+0.4*((GP15-GP16)/(GP15+GP16));
+	JP31 = 1+0.4*((IP11-IP12)/(IP11+IP12));
+	JP32 = 1+0.4*((IP13-IP14)/(IP13+IP14));
+	JP33 = 1+0.4*((IP15-IP16)/(IP15+IP16));
+	
+	CP37 = EP19*EP20*EP24*((EP21*GP11*GP31+EP22*IP11*HP31)/(EP27*(EP23-EP19*EP20*FP31)))*LP31*Math.pow(KP31,2)*1000;
+	CP38 = EP19*EP20*EP24*((EP21*GP13*GP32+IP13*EP22*HP32)/(EP27*(EP23-EP19*EP20*FP32)))*LP32*Math.pow(KP32,2)*1000;
+	CP39 = EP19*EP20*EP24*((EP21*GP15*GP33+IP15*EP22*HP33)/(EP27*(EP23-EP19*EP20*FP33)))*LP33*Math.pow(KP33,2)*1000;
+	GP37 = 10*EP19*EP20*EP25*((EP21*IP31*GP11+EP22*IP11*JP31)/EP23)*KP31*LP31;
+	GP38 = 10*EP19*EP20*EP25*((EP21*GP13*IP32+IP13*EP22*JP32)/EP23)*KP32*LP32;
+	GP39 = 10*EP19*EP20*EP25*((EP21*GP15*IP33+IP15*EP22*JP33)/EP23)*KP33*LP33;
+	
+	
+	document.getElementById("CP37").innerHTML=CP37.toFixed(3);
+	document.getElementById("CP38").innerHTML=CP38.toFixed(3);
+	document.getElementById("CP39").innerHTML=CP39.toFixed(3);
+	document.getElementById("GP37").innerHTML=GP37.toFixed(3);
+	document.getElementById("GP38").innerHTML=GP38.toFixed(3);
+	document.getElementById("GP39").innerHTML=GP39.toFixed(3);
+	
+	DP52 = D142;
+	DP53 = D143;
+	EP52 = D144;
+	EP53 = D144;
+	EP54 = D144;
+	JP52 = I142;
+	JP53 = I143;
+	KP52 = I144;
+	KP53 = I144;
+	KP54 = I144;
+	
+	EP59 =  parseFloat(document.getElementById("EP59").value);
+	EP60 =  parseFloat(document.getElementById("EP60").value);
+	EP61 =  parseFloat(document.getElementById("EP61").value);
+	EP62 =  parseFloat(document.getElementById("EP62").value);
+	EP63 =  parseFloat(document.getElementById("EP63").value);
+	EP64 =  parseFloat(document.getElementById("EP64").value);
+	EP65 =  parseFloat(document.getElementById("EP65").value);
+	EP66 = 45/EP18;
+	EP67 = parseFloat(document.getElementById("EP67").value);
+	if ( EP59 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}	
+	if ( EP60 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}		
+	if ( EP61 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}	
+	if ( EP62 < 0 ) {
+		alert("Error! You have entered a negative value for 'Partial Safety Factor' ");
+	}		
+	if ( EP63 < 0 ) {
+		alert("Error! You have entered a negative value for 'Minimum yield stress of the Material ' ");
+	}			
+
+	if ( EP64 < 0 ) {
+		alert("Error! You have entered a negative value for 'Coefficient' ");
+	}	
+	if ( EP64 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Coefficient" );
+	}		
+
+	if ( EP65 < 0 ) {
+		alert("Error! You have entered a negative value for 'Coefficient' ");
+	}	
+	if ( EP65 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Coefficient" );
+	}
+	if ( EP67 < 0 ) {
+		alert("Error! You have entered a negative value for 'Boundary Coefficient' ");
+	}	
+	if ( EP67 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for 'Boundary Coefficient" );
+	}	
+	CP71 = parseFloat(document.getElementById("CP71").value);
+	CP72 = parseFloat(document.getElementById("CP72").value);
+	CP73 = parseFloat(document.getElementById("CP73").value);
+	CP74 = parseFloat(document.getElementById("CP74").value);
+	DP71 = parseFloat(document.getElementById("DP71").value);
+	DP72 = parseFloat(document.getElementById("DP72").value);
+	DP73 = parseFloat(document.getElementById("DP73").value);
+	DP74 = parseFloat(document.getElementById("DP74").value);
+	if ( CP71 < 0 ) {
+		alert("Error! You have entered a negative value for 'Longitudinal' l ");
+	}	
+	if ( CP72 < 0 ) {
+		alert("Error! You have entered a negative value for 'Longitudinal' l ");
+	}	
+	if ( CP73 < 0 ) {
+		alert("Error! You have entered a negative value for 'Longitudinal' l ");
+	}	
+	if ( DP71 < 0 ) {
+		alert("Error! You have entered a negative value for 'Longitudinal' s ");
+	}	
+	if ( DP72 < 0 ) {
+		alert("Error! You have entered a negative value for 'Longitudinal' s ");
+	}	
+	if ( DP73 < 0 ) {
+		alert("Error! You have entered a negative value for 'Longitudinal' s ");
+	}	
+	if ( CP74 < 0 ) {
+		alert("Error! You have entered a negative value for 'Transverse' l ");
+	}	
+	if ( DP74 < 0 ) {
+		alert("Error! You have entered a negative value for 'Transverse' s ");
+	}	
+
+
+
+
+	
+	CP78 = EP59*EP60*EP64*((EP61*EP52+EP62*KP52)/(EP67*(EP63-EP59*EP60*EP66)))*DP73*Math.pow(CP73,2)*1000;
+	CP79 = EP59*EP60*EP64*((EP61*EP53+EP62*KP53)/(EP67*(EP63-EP59*EP60*EP66)))*DP73*Math.pow(CP73,2)*1000;
+	CP80 = EP59*EP60*EP64*((EP61*EP54+EP62*KP54)/(EP67*(EP63-EP59*EP60*EP66)))*DP72*Math.pow(CP72,2)*1000;
+
+	EP78 = 10*EP59*EP60*EP65*((EP61*EP52+EP62*KP52)/EP63)*DP73*CP73;
+	EP79 = 10*EP59*EP60*EP65*((EP61*EP53+EP62*KP53)/EP63)*DP73*CP73;
+	EP80 = 10*EP59*EP60*EP65*((EP61*EP54+EP62*KP54)/EP63)*DP73*CP73;
+	JP78 = EP59*EP60*EP64*((EP61*DP52+EP62*JP52)/(EP67*(EP63-EP59*EP60*EP66)))*DP71*Math.pow(CP71,2)*1000
+	JP79 = EP59*EP60*EP64*((EP61*DP53+EP62*JP53)/(EP67*(EP63-EP59*EP60*EP66)))*DP71*Math.pow(CP71,2)*1000
+	LP78 = 10*EP59*EP60*EP65*((EP61*DP52+EP62*JP52)/EP63)*DP71*CP71;
+	LP79 = 10*EP59*EP60*EP65*((EP61*DP53+EP62*JP53)/EP63)*DP71*CP71;
+
+	CP86 = EP59*EP60*EP64*((EP61*EP52+EP62*KP52)/(EP67*(EP63-EP59*EP60*EP66)))*DP74*Math.pow(CP74,2)*1000;
+	CP87 = EP59*EP60*EP64*((EP61*EP53+EP62*KP53)/(EP67*(EP63-EP59*EP60*EP66)))*DP74*Math.pow(CP74,2)*1000;
+	CP88 = EP59*EP60*EP64*((EP61*EP54+EP62*KP54)/(EP67*(EP63-EP59*EP60*EP66)))*DP74*Math.pow(CP74,2)*1000;
+	EP86 = 10*EP59*EP60*EP65*((EP61*EP52+EP62*KP52)/EP63)*DP74*CP74;
+	EP87 = 10*EP59*EP60*EP65*((EP61*EP53+EP62*KP53)/EP63)*DP74*CP74;
+	EP88 = 10*EP59*EP60*EP65*((EP61*EP54+EP62*KP54)/EP63)*DP74*CP74;
+
+	JP86 = EP59*EP60*EP64*((EP61*DP52+EP62*JP52)/(EP67*(EP63-EP59*EP60*EP66)))*DP74*Math.pow(CP74,2)*1000
+	JP87 = EP59*EP60*EP64*((EP61*DP53+EP62*JP53)/(EP67*(EP63-EP59*EP60*EP66)))*DP74*Math.pow(CP74,2)*1000
+	LP86 = 10*EP59*EP60*EP65*((EP61*DP52+EP62*JP52)/EP63)*DP74*CP74;
+	LP87 = 10*EP59*EP60*EP65*((EP61*DP53+EP62*JP53)/EP63)*DP74*CP74;
+	
+	
+	document.getElementById("CP78").innerHTML=CP78.toFixed(3);
+	document.getElementById("CP79").innerHTML=CP79.toFixed(3);
+	document.getElementById("CP80").innerHTML=CP80.toFixed(3);
+	document.getElementById("EP78").innerHTML=EP78.toFixed(3);
+	document.getElementById("EP79").innerHTML=EP79.toFixed(3);
+	document.getElementById("EP80").innerHTML=EP80.toFixed(3);
+	
+	document.getElementById("JP78").innerHTML=JP78.toFixed(3);
+	document.getElementById("JP79").innerHTML=JP79.toFixed(3);
+	
+	document.getElementById("LP78").innerHTML=LP78.toFixed(3);
+	document.getElementById("LP79").innerHTML=LP79.toFixed(3);
+
+	document.getElementById("CP86").innerHTML=CP86.toFixed(3);
+	document.getElementById("CP87").innerHTML=CP87.toFixed(3);
+	document.getElementById("CP88").innerHTML=CP88.toFixed(3);
+	document.getElementById("EP86").innerHTML=EP86.toFixed(3);
+	document.getElementById("EP87").innerHTML=EP87.toFixed(3);
+	document.getElementById("EP88").innerHTML=EP88.toFixed(3);
+	
+	document.getElementById("JP86").innerHTML=JP86.toFixed(3);
+	document.getElementById("JP87").innerHTML=JP87.toFixed(3);
+	
+	document.getElementById("LP86").innerHTML=LP86.toFixed(3);
+	document.getElementById("LP87").innerHTML=LP87.toFixed(3);
+	
+	DP101 = D142;
+	DP102 = D143;
+	DP103 = D144;
+	IP101 = I142;
+	IP102 = I143;
+	IP103 = I144; 
+	
+	EP107 =  parseFloat(document.getElementById("EP107").value);
+	EP108 =  parseFloat(document.getElementById("EP108").value);
+	EP109 =  parseFloat(document.getElementById("EP109").value);
+	CP111 =  parseFloat(document.getElementById("CP111").value);
+	CP112 =  parseFloat(document.getElementById("CP112").value);
+	CP116 =  parseFloat(document.getElementById("CP116").value);
+	CP117 =  parseFloat(document.getElementById("CP117").value);
+	if ( EP107 < 0 ) {
+		alert("Error! You have entered a negative value for MODULUS Of Elasticity ");
+	}	
+
+	if ( EP108 < 0 ) {
+		alert("Error! You have entered a negative value for 'Coefficient' ");
+	}	
+	if ( EP108 > 1 ) {
+		alert("Error! You have entered a  value greater than 1 for Coefficient" );
+	}
+	if ( EP109 < 0 ) {
+		alert("Error! You have entered a negative value for 'Minimum yield stress of the Material ' ");
+	}			
+	if ( CP111 < 0 ) {
+		alert("Error! You have entered a negative value for Outer Diameter");
+	}	
+	if ( CP112 < 0 ) {
+		alert("Error! You have entered a negative value for Thickness");
+	}	
+	if ( CP116 < 0 ) {
+		alert("Error! You have entered a negative value for 1st tier of Deck house");
+	}	
+	if ( CP117 < 0 ) {
+		alert("Error! You have entered a negative value for 2nd tier of Deck house");
+	}	
+	
+	DP116 =  (CP116*(EP61*DP101+EP62*IP101))+(CP117*(EP61*DP102+EP62*IP102))+(CP118*(EP61*DP103+EP62*IP103));
+	DP117 =  (CP117*(EP61*DP102+EP62*IP102))+(CP118*(EP61*DP103+EP62*IP103));
+	EP116 = 2.6;
+	EP117 = 4;
+	FP116 = 22*(Math.pow(CP111,4)-Math.pow((CP111-2*CP112),4))/(7*640000);
+	FP117 = 22*(Math.pow(CP111,4)-Math.pow((CP111-2*CP112),4))/(7*640000);
+	GP116 = (22/7)*Math.pow(((CP111*0.1)/2),2);
+	GP117 = (22/7)*Math.pow(((CP111*0.1)/2),2);
+	HP116 = (Math.pow((22/7),2)*EP107*FP116*Math.pow(10,(-4)))/Math.pow((GP116*(EP108*EP116),2));
+	HP117 = (Math.pow((22/7),2)*EP107*FP117*Math.pow(10,(-4)))/Math.pow((GP117*(EP108*EP117),2));
+			
+	if(HP116 <= (EP109/2)) {
+	IP116 =	HP116;
+	}
+	else {
+	IP116 = EP109*(1-(EP109/(4*HP116)));
+	}
+
+	if(HP117 <= (EP109/2)) {
+	IP117 =	HP117;
+	}
+	else {
+	IP117 = EP109*(1-(EP109/(4*HP117)));
+	}
+
+}
+</script>
+</head>
+
+<body>
+		<!-- basic data -->
+	<div>
+	<h1>BASIC DATA </h1>
+	</div>
+	<div>
+	<table>
+		<tr>
+			<td> <h3> PrincipalParticulars </h3>	</td>
+			<td> <h3> Symbols 				</h3>	</td>
+			<td> <h3> Values  				</h3>	</td>
+			<td> <h3> Units  				</h3>	</td>
+		</tr>
+		<tr>
+			 <td>	Overall Length	</td>
+			 <td>	LOA				</td>
+	     	 <td>	<input type="text" id="d5">			</td>
+	     	 <td>	m				</td>
+	    </tr>
+		<tr>
+			 <td>	Rule Length		</td>
+			 <td>	L				</td>
+	     	 <td>	<input type="text" id="d6">				</td>
+	     	 <td>	m				</td>
+	    </tr>	   
+		<tr>
+			 <td>	Rule Breadth	</td>
+			 <td>	B				</td>
+	     	 <td>	<input type="text" id="d7">				</td>
+	     	 <td>	m				</td>
+	    </tr>
+		<tr>
+			 <td>	Depth to main deck	</td>
+			 <td>	D					</td>
+	     	 <td>	<input type="text" id="d8">					</td>
+	     	 <td>	m	</td>
+	    </tr>
+		<tr>
+			 <td>	Mean design draught	</td>
+			 <td>	T	</td>
+	     	 <td>	<input type="text" id="d9">	</td>
+	     	 <td>	m	</td>
+	    </tr>
+		<tr>
+			 <td>	Scantling Displacement	</td>
+			 <td>	delta	</td>
+	     	 <td>	<input type="text" id="d10">	</td>
+	     	 <td>	t	</td>
+	    </tr>
+		<tr>
+			 <td>	Sea water density	</td>
+			 <td>	p		</td>
+	     	 <td>	<input type="text" id="d11">		</td>
+	     	 <td>	t/m3	</td>
+	    </tr>
+		<tr>
+			 <td>	Max. Speed	</td>
+			 <td>	V	</td>
+	     	 <td>	<input type="text" id="d12">	</td>
+	     	 <td>	knots	</td>
+	    </tr>
+	    <tr>
+	    <td>
+	    <input type = "button" value ="block coefficient" onclick = "cbcalculation()" >
+	    </td>
+	    </tr>	    	    	    	    	    	
+		<tr>
+			 <td>	Block Coefficient	</td>
+			 <td>	Cb	</td>
+	     	 <td id="d13"> </td>	
+	    </tr>
+	</table>
+	</div>
+	<!--pressure -->
+	<h1> PRESSURE </h1>
+	<div>
+		<h3><strong>LATERAL PRESSURE ON FRONT,SIDE AND AFT BULKHEADS </strong></h3>
+	</div>
+	<table>
+		<tr>
+			<td> stem	X </td>
+			<td> <input type = "text" id = "D19"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> stern	X </td>
+			<td> <input type = "text" id = "D20"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> Aft End	X </td>
+			<td> <input type = "text" id = "D21"> </td>
+			<td> m </td>
+
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<th> Breadth of deckhouse "b1"	</th>
+		</tr>
+		<tr>
+			<td> Lower tier of deckhouse </td>
+			<td> <input type = "text" id = "K25"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> 2nd tier of deckhouse </td>
+			<td> <input type = "text" id = "K26"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> 3rd tier of deckhouse </td>
+			<td> <input type = "text" id = "K27"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> 4th tier of deckhouse and above </td>
+			<td> <input type = "text" id = "K28"> </td>
+			<td> m </td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<th> "Z" from baseline	</th>
+		</tr>
+		<tr>
+			<td> Main deck </td>
+			<td> <input type = "text" id = "O24"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> Lower tier of deckhouse </td>
+			<td> <input type = "text" id = "O25"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> 2nd tier of deckhouse </td>
+			<td> <input type = "text" id = "O26"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> 3rd tier of deckhouse </td>
+			<td> <input type = "text" id = "O27"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> 4th tier of deckhouse and above </td>
+			<td> <input type = "text" id = "O28"> </td>
+			<td> m </td>
+		</tr>
+	</table>
+	
+		 
+	<h3>	PRESSURE ON EXPOSED DECKS (STILL WATER PRESSURE)	</h3> 
+	
+	<table>
+		<tr> 
+			<td> Z </td>
+			<td> <input type = "text" id = "D66"> </td>	
+			<td> m	</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<th> "Z" from base line	</th>
+		</tr>
+		<tr>
+			<td> Lower tier lower end </td>
+			<td> <input type = "text" id = "H64"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> Lower tier upper end </td>
+			<td> <input type = "text" id = "H65"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> 2nd tier lower end </td>
+			<td> <input type = "text" id = "H66"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> 2nd tier upper end </td>
+			<td> <input type = "text" id = "H67"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> 3rd tier lower end </td>
+			<td> <input type = "text" id = "H68"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> 3rd tier upper end </td>
+			<td> <input type = "text" id = "H69"> </td>
+			<td> m </td>
+		</tr>
+	</table>
+	<h3>PRESSURE ON DECKS (STILL WATER PRESSURE & INERTIAL PRESSURE) </h3>
+	<table>
+
+		<tr>
+			<td> NAVIGATION COEFFICIENT </td>
+			<td>n<input type = "text" id = "D129"></td>
+			<td><input type = "button" value ="pressure calculations" onclick = "pressurevaluesassign()" > </td>	
+		</tr>
+	</table>
+	<h1>	THICKNESS	</h1>
+	<h2>	 Plating not contributing to the longitudinal strength (Front, Side and aft bulkheads) 	</h2>
+	<table>
+	
+		<tr>
+			<td> Rule Length </td>
+			<td> L </td>
+			<td> <input type = "text" id = "ET15"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td>  Minimum guaranteed yield stress, in N/mm2 </td>
+			<td> R <sub> p 0,2 </sub></td>
+			<td> <input type = "text" id = "ET16"> </td>
+			<td> units </td>
+		</tr>
+		<tr>
+			<td>  Joint coefficient </td>
+			<td> n </td>
+			<td> <input type = "text" id = "ET17"> </td>
+		</tr>
+		<tr>
+			<td> Corrosion addition </td>
+			<td> t <sub>c</sub> </td>
+			<td> <input type = "text" id = "ET19"> </td>
+			<td> mm </td>
+		</tr>
+		<tr>
+			<td> Spacing of ordinary stiffeners </td>
+			<td> s </td>
+			<td> <input type = "text" id = "ET20"> </td>
+			<td> m </td>
+
+		</tr>
+</table>
+<table>
+		<th> REQUIRED NET THICKNESS </th>
+		<tr>
+			<td> Lower tier - front	</td>
+			<td> <input type = "text" id = "MT24">	</td>
+			<td> mm </td>
+		</tr>
+		<tr>
+			<td> Lower tier - side	</td>
+			<td> <input type = "text" id = "MT25">	</td>
+			<td> mm </td>
+		</tr>
+		<tr>
+			<td> Lower tier - aft end	</td>
+			<td> <input type = "text" id = "MT26">	</td>
+			<td> mm </td>
+		</tr>
+		<tr>
+			<td> Second tier and above	</td>
+			<td> <input type = "text" id = "MT27">	</td>
+			<td> mm </td>
+		</tr>
+</table>
+<table>
+		<tr>
+			<th> Plating not contributing to the longitudinal strength  (Decks) </th>
+		</tr>
+		<tr>
+			<td> Longer side of the plate panel </td>
+			<td> l </td>
+			<td> <input type = "text" id = "ET46"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> Shorter side of the plate panel </td>
+			<td> s </td>
+			<td> <input type = "text" id = "ET47"> </td>
+			<td> m </td>
+		</tr>
+
+		<tr>
+			<td> Radius of curvature  </td>
+			<td> r </td>
+			<td> <input type = "text" id = "ET49"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> Coefficient of curvature  of the panel </td>
+			<td> C <sub>r</sub> </td>
+			<td> <input type = "text" id = "ET50"> </td>
+		</tr>
+
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Yr </td>
+			<td> <input type = "text" id = "ET51"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Ym </td>
+			<td> <input type = "text" id = "ET52"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Y<sub>s2 </sub> </td>
+			<td> <input type = "text" id = "ET53"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Y<sub>w2 </sub></td>
+			<td> <input type = "text" id = "ET54"> </td>
+		</tr>
+		<tr>
+			<td> Minimum yield stress of the material </td>
+			<td> R<sub>	y</sub></td>
+			<td> <input type = "text" id = "ET55"> </td>
+			<td><input type = "button" value ="thicknesscalculations" onclick = "thicknesscalculations()" > </td>	
+
+		</tr>
+		
+	</table>	
+	
+	<h1> STIFFENERS</h1>
+	<h2>Plating not contributing to the longitudinal strength (Front, Side and aft bulkheads) </h2>
+	
+	<table>
+		
+		<tr>
+			<td> Span of the ordinary stiffener </td>
+			<td> l </td>
+			<td> <input type = "text" id = "DS16"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> Spacing of Ordinary stiffeners </td>
+			<td> s </td>
+			<td> <input type = "text" id = "DS17"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> Coefficient depending on the stiffener end connections </td>
+			<td> pi </td>
+			<td> <input type = "text" id = "DS18"> </td>
+			<td>  </td>
+		</tr>
+		<tr>
+			<td> Corrosion addition </td>
+			<td> t <sub>c</sub> </td>
+			<td> <input type = "text" id = "DS20"> </td>
+			<td>  </td>
+		</tr>
+		<tr>
+			<td>Coefficient </td>
+			<td> alpha </td>
+			<td> <input type = "text" id = "DS21"> </td>
+			
+		</tr>
+		<tr>
+			<td>Coefficient </td>
+			<td> beta </td>
+			<td> <input type = "text" id = "DS22"> </td>
+			
+		</tr>
+	</table>	
+	<table>
+		<tr> <th> SECTION MODULUS </th>	</tr>
+		<tr>
+			<td>  Lower tier - front	</td>
+			<td	id = "DS26"	></td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+		<tr>
+			<td>  Lower tier - side	</td>
+			<td	id = "DS27">	</td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+		<tr>
+			<td>  Lower tier - aft end	</td>
+			<td	id = "DS28">	</td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+		<tr>
+			<td>  second tier and above	</td>
+			<td	id = "DS29"	></td>
+			<td>	cm<sup>3</sup>	</td>
+			<td><input type = "button" value ="calculate" onclick = "stiffnerscalculations()" > </td>	
+
+		</tr>
+
+	</table>
+	
+	<h2> 	Ordinary stiffeners of Plating not contributing to the longitudinal strength (Decks)	</h2>
+	
+	<table>
+		<tr>
+			<td>Coefficient </td>
+			<td> C <sub>c</sub> </td>
+			<td> <input type = "text" id = "ES47"> </td>
+			
+		</tr>
+		
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Yr </td>
+			<td> <input type = "text" id = "ES48"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Ym </td>
+			<td> <input type = "text" id = "ES49"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Y<sub>s2 </sub> </td>
+			<td> <input type = "text" id = "ES50"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Y<sub>w2 </sub></td>
+			<td> <input type = "text" id = "ES51"> </td>
+		</tr>
+		<tr>
+			<td> Minimum yield stress of the material </td>
+			<td> R<sub>	y</sub></td>
+			<td> <input type = "text" id = "ES52"> </td>
+		</tr>
+		<tr>
+			<td>Coefficient </td>
+			<td> beta <sub>b</sub> </td>
+			<td> <input type = "text" id = "ES53"> </td>
+			
+		</tr>
+		<tr>
+			<td>Coefficient </td>
+			<td> beta<sub>s</sub> </td>
+			<td> <input type = "text" id = "ES54"> </td>
+			
+		</tr>
+		<tr>
+			<td> Span of the ordinary stiffener </td>
+			<td> l </td>
+			<td> <input type = "text" id = "ES55"> </td>
+			<td> m </td>
+		</tr>
+		<tr>
+			<td> Spacing of Ordinary stiffeners </td>
+			<td> s </td>
+			<td> <input type = "text" id = "ES56"> </td>
+			<td> m </td>
+			<td><input type = "button" value ="calculate" onclick = "stiffnerscalculations()" > </td>	
+
+		</tr>
+	</table>
+	<table>
+		<tr> <th> SECTION MODULUS </th>	</tr>
+		<tr>
+			<td>  Lower tier Of deckhouse	</td>
+			<td	id = "DS60">	</td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+		<tr>
+			<td>  Second tier Of deckhouse	</td>
+			<td	id = "DS61">	</td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+		<tr>
+			<td>  Third tier Of deckhouse	</td>
+			<td	id = "DS62" >	</td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+	</table>	
+	<table>
+		<tr> <th> SECTIONAL AREA </th>	</tr>
+		<tr>
+			<td>  Lower tier Of deckhouse	</td>
+			<td	id = "IS60"	></td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+		<tr>
+			<td>  Second tier Of deckhouse	</td>
+			<td	id = "IS61" >	</td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+		<tr>
+			<td>  Third tier Of deckhouse	</td>
+			<td	id = "IS62" >	</td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+	</table>
+	<h1>	PRIMARY SUPPORTING MEMBERS	</h1>	
+	<h2>	Primary supporting members of Plating not contributing to the longitudinal strength (Front, Side and aft bulkheads) </h2>
+	<table>
+			<tr>
+			<td> Partial safety factor </td>
+			<td> Yr </td>
+			<td> <input type = "text" id = "EP19"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Ym </td>
+			<td> <input type = "text" id = "EP20"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Y<sub>s2 </sub> </td>
+			<td> <input type = "text" id = "EP21"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Y<sub>w2 </sub></td>
+			<td> <input type = "text" id = "EP22"> </td>
+		</tr>
+		<tr>
+			<td> Minimum yield stress of the material </td>
+			<td> R<sub>	y</sub></td>
+			<td> <input type = "text" id = "EP23"> </td>
+		</tr>
+		<tr>
+			<td>Coefficient </td>
+			<td> beta <sub>b</sub> </td>
+			<td> <input type = "text" id = "EP24"> </td>
+			
+		</tr>
+		<tr>
+			<td>Coefficient </td>
+			<td> beta<sub>s</sub> </td>
+			<td> <input type = "text" id = "EP25"> </td>
+			
+		</tr>
+		<tr>
+			<td> Boundary coefficient </td>
+			<td> m </td>
+			<td>  <input type = "text" id = "EP27"> </td>
+		</tr>
+	</table>
+	<table>
+		<tr> <th> SECTION MODULUS </th>	</tr>
+		<tr>
+			<td>  First tier Of deckhouse	</td>
+			<td	id = "CP37">	</td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+		<tr>
+			<td>  Second tier Of deckhouse	</td>
+			<td	id = "CP38">	</td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+		<tr>
+			<td>  Third tier Of deckhouse	</td>
+			<td	id = "CP39" >	</td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+	</table>	
+	<table>
+		<tr> <th> SECTIONAL AREA </th>	</tr>
+		<tr>
+			<td>  First tier Of deckhouse	</td>
+			<td	id = "GP37"	></td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+		<tr>
+			<td>  Second tier Of deckhouse	</td>
+			<td	id = "GP38" >	</td>
+			<td>	cm<sup>3</sup>	</td>
+		</tr>
+		<tr>
+			<td>  Third tier Of deckhouse	</td>
+			<td	id = "GP39" >	</td>
+			<td>	cm<sup>3</sup>	</td>
+			<td><input type = "button" value ="calculate" onclick = "primary()" > </td>	
+
+		</tr>
+	</table>
+	<h2>Primary supporting members of Plating not contributing to the longitudinal strength (Decks)</h2>
+	<table>
+			<tr>
+			<td> Partial safety factor </td>
+			<td> Yr </td>
+			<td> <input type = "text" id = "EP59"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Ym </td>
+			<td> <input type = "text" id = "EP60"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Y<sub>s2 </sub> </td>
+			<td> <input type = "text" id = "EP61"> </td>
+		</tr>
+		<tr>
+			<td> Partial safety factor </td>
+			<td> Y<sub>w2 </sub></td>
+			<td> <input type = "text" id = "EP62"> </td>
+		</tr>
+		<tr>
+			<td> Minimum yield stress of the material </td>
+			<td> R<sub>	y</sub></td>
+			<td> <input type = "text" id = "EP63"> </td>
+		</tr>
+		<tr>
+			<td>Coefficient </td>
+			<td> beta <sub>b</sub> </td>
+			<td> <input type = "text" id = "EP64"> </td>
+			
+		</tr>
+		<tr>
+			<td>Coefficient </td>
+			<td> beta<sub>s</sub> </td>
+			<td> <input type = "text" id = "EP65"> </td>
+			
+		</tr>
+		<tr>
+			<td> Boundary coefficient </td>
+			<td> m </td>
+			<td>  <input type = "text" id = "EP67"> </td>
+		</tr>
+	</table>
+
+	<h3>Optimum spans and spacings considered from the preliminary GA</h3>
+	<table>
+		<tr>
+			<td></td>
+			<td><strong>l</strong></td>
+			<td><strong>s</strong></td>
+		</tr>
+		<tr>
+			<td>longitudinal </td>
+			<td>  <input type = "text" id = "CP71"> </td>
+			<td>  <input type = "text" id = "DP71">  </td>
+		</tr>
+		<tr>
+			<td>longitudinal </td>
+			<td>  <input type = "text" id = "CP72"> </td>
+			<td>  <input type = "text" id = "DP72">  </td>
+		</tr>
+		<tr>
+			<td>longitudinal </td>
+			<td>  <input type = "text" id = "CP73"> </td>
+			<td>  <input type = "text" id = "DP73">  </td>
+		</tr>
+		<tr>
+			<td> transverse </td>
+			<td>  <input type = "text" id = "CP74"> </td>
+			<td>  <input type = "text" id = "DP74">  </td>
+			
+		</tr>	
+	</table>
+	<h3>Longitudinal primary supporting members at operation rooms</h3>
+	
+	<table>
+		<tr>
+			<td>  Location 			</td>
+			<td> Section Modulus	</td>
+			<td> Units 				</td>
+			<td> Sectional Area 	</td>
+			<td> Units 				</td>
+		</tr>
+		<tr>
+			<td>  1st tier of deckhouse 	</td>
+			<td id = "CP78">	</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "EP78">	</td>
+			<td> cm <sup>3</sup>	 		</td>
+		</tr>
+		<tr>
+			<td>  2nd tier of deckhouse 	</td>
+			<td id = "CP79">	</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "EP79">	</td>
+			<td> cm <sup>3</sup>			</td>
+		</tr>
+		<tr>
+			<td>  3rd tier of deckhouse 	</td>
+			<td id = "CP80">				</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "EP80">				</td>
+			<td> cm <sup>3</sup>	 		</td>
+		</tr>			
+	</table>
+			 <h3>Longitudinal primary supporting members at Ammunition storages</h3>
+	<table>
+
+		<tr>
+			<td>  Location 			</td>
+			<td> Section Modulus	</td>
+			<td> Units 				</td>
+			<td> Sectional Area 	</td>
+			<td> Units 				</td>
+		</tr>
+		<tr>
+			<td>  1st tier of deckhouse 	</td>
+			<td id = "JP78">				</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "LP78">				</td>
+			<td> cm <sup>3</sup>	 		</td>
+		</tr>
+		<tr>
+			<td>  2nd tier of deckhouse 	</td>
+			<td id = "JP79">				</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "LP79">				</td>
+			<td> cm <sup>3</sup>	 		</td>
+		</tr>
+		<tr>
+			<td>  3rd tier of deckhouse 	</td>
+			<td id = "JP80">				</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "LP80">				</td>
+			<td> cm <sup>3</sup>	 		</td>
+		</tr>			
+	</table>
+			 <h3>  Transverse primary supporting members at operation rooms</h3>
+	<table>
+	
+		<tr>
+			<td>  Location 			</td>
+			<td> Section Modulus	</td>
+			<td> Units 				</td>
+			<td> Sectional Area 	</td>
+			<td> Units 				</td>
+		</tr>
+		<tr>
+			<td>  1st tier of deckhouse 	</td>
+			<td id = "CP86">	</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "EP86">	</td>
+			<td> cm <sup>3</sup>	 		</td>
+		</tr>
+		<tr>
+			<td>  2nd tier of deckhouse 	</td>
+			<td id = "CP87">	</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "EP87">	</td>
+			<td> cm <sup>3</sup>			</td>
+		</tr>
+		<tr>
+			<td>  3rd tier of deckhouse 	</td>
+			<td id = "CP88">				</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "EP88">				</td>
+			<td> cm <sup>3</sup>	 		</td>
+		</tr>			
+	</table>
+	
+			 <h3>Transverse primary supporting members at Ammunition storages</h3>
+	<table>
+	
+		<tr>
+			<td>  Location 			</td>
+			<td> Section Modulus	</td>
+			<td> Units 				</td>
+			<td> Sectional Area 	</td>
+			<td> Units 				</td>
+		</tr>
+		<tr>
+			<td>  1st tier of deckhouse 	</td>
+			<td id = "JP86">				</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "LP86">				</td>
+			<td> cm <sup>3</sup>	 		</td>
+		</tr>
+		<tr>
+			<td>  2nd tier of deckhouse 	</td>
+			<td id = "JP87">				</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "LP87">				</td>
+			<td> cm <sup>3</sup>	 		</td>
+		</tr>
+		<tr>
+			<td>  3rd tier of deckhouse 	</td>
+			<td id = "JP88">				</td>
+			<td>  cm <sup>3</sup>			</td>
+			<td id = "LP88">				</td>
+			<td> cm <sup>3</sup>	 		</td>
+		</tr>			
+	</table>
+	
+	<table>
+	
+		<tr>
+			<td> MODULUS OF ELASTICITY </td>
+			<td> E </td>
+			<td> <input type = "text" id = "EP107"> </td>
+			<td> N/mm<sup>2</sup> </td>
+		</tr>
+		<tr>
+			<td> coefficient </td>
+			<td> f </td>
+			<td> <input type = "text" id = "EP108"> </td>
+		</tr>
+		<tr>
+			<td> minimum yield stress of te material </td>
+			<td> R<sup>eH</sup> </td>
+			<td> <input type = "text" id = "EP109"> </td>
+			<td> N/mm<sup>2</sup> </td>
+		</tr>
+	</table>
+	
+	<table>
+		<tr>
+			<td> OUTER DIAMETER </td>
+			<td> <input type = "text" id = "CP111"> </td>
+			<td> mm </td>
+		</tr>
+		
+		<tr>
+			<td> THICKNESS </td>
+			<td> <input type = "text" id = "CP112"> </td>
+			<td> mm </td>
+		</tr>
+	
+	</table>
+	<h3> A <sub> o</sub> </h3>
+	<table>
+		<tr>
+			<td> 1st tier of deckhouse </td>
+			<td> <input type = "text" id = "CP116"> </td>
+		</tr>
+		<tr>
+			<td> 2nd tier of deckhouse </td>
+			<td> <input type = "text" id = "CP117"> </td>
+			<td><input type = "button" value ="calculate" onclick = "primary()" > </td>	
+		</tr>
+	</table>	
+</body>
+
+</html>
